@@ -14,12 +14,13 @@ IDS = list(range(10000000,10000020))
 NODES = [ statics.long(random.choice(IDS)) for _ in range(10_000) ]
 BATCHES = [NODES[i:i + 100] for i in range(0, len(NODES), 100)]
 
+graph = Graph()
+
 def connect(port):
     connstring = f"ws://127.0.0.1:{port}/gremlin"
     return DriverRemoteConnection(connstring, 'g')
 
 def test(port):
-    graph = Graph()
     conn = connect(port)
     g = graph.traversal().withRemote(conn)
     g.V().drop().iterate()
