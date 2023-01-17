@@ -4,10 +4,10 @@ services:
     image: tinkerpop/gremlin-server:3.5.3
   
     ports:
-        - "8182:8182"
+        - "353:8182"
 
   gremlin-server-354:
     image: tinkerpop/gremlin-server:3.5.3
 
     ports:
-        - "8183:8182"
+        - "354:8182"

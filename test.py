@@ -1,6 +1,7 @@
 import asyncio
 import uuid
 import random
+import timeit
 
 from gremlin_python import statics
 from gremlin_python.structure.graph import Graph
@@ -39,8 +40,5 @@ def test(port):
     g = graph.traversal().withRemote(conn)
     conn.close()
 
-
-import timeit
-
-print("3.5.3 = ", timeit.timeit("test(8182)", number=1, globals=globals()))
-print("3.5.4 = ", timeit.timeit("test(8183)", number=1, globals=globals()))
+for v in ["353", "354"]:
+    print(f"{v} = ", timeit.timeit(f"test({v})", number=1, globals=globals()))
