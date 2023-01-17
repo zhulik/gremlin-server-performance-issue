@@ -1,14 +1,22 @@
 version: "3.9"
 
 services:
-  gremlin-server-353:
+  gremlin-server-3.5.3:
     image: tinkerpop/gremlin-server:3.5.3
-  
-    ports:
-        - "353:8182"
+    expose: 
+      - 8182
 
-  gremlin-server-354:
+  gremlin-server-3.5.4:
     image: tinkerpop/gremlin-server:3.5.4
-      
-    ports:
-        - "354:8182"
+    expose: 
+      - 8182
+  
+  test:
+    build: .
+    depends_on:
+      - gremlin-server-3.5.3
+      - gremlin-server-3.5.4
+    
+    links:
+      - gremlin-server-3.5.3
+      - gremlin-server-3.5.4
