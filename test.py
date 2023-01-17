@@ -34,8 +34,8 @@ def test(version):
     
     conn.close()
 
-print("Sleep 5 seconds to let gremlin server start as it doesnt't have healthchecks")
+print("Sleep 5 seconds to let gremlin server start as it doesn't have healthchecks")
 time.sleep(5) 
 
 for version in ["3.5.3", "3.5.4"]:
-    print(f"{version} = ", timeit.timeit(f"test(\"{version}\")", number=1, globals=globals()))
+    print(f"{version} =", timeit.timeit(f"test(\"{version}\")", number=1, globals=globals()))
